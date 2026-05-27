@@ -1,4 +1,5 @@
 import aiohttp
+import everapi
 
 
 class Client(everapi.Client):
