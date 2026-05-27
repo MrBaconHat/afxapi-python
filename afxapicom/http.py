@@ -39,6 +39,7 @@ class HTTPClient:
             params=params,
             headers=headers
         ) as resp:
+            
             if resp.status == 200:
                 return await resp.json()
                 
