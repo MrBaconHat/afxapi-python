@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "afxapicom"
+version = "0.1.0"
+description = "Async Python client for currency exchange rates"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = ["exchange rates", "currency", "forex", "async", "api"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Framework :: AsyncIO",
+]
+dependencies = [
+    "aiohttp>=3.9"
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/afxapicom"
+Repository = "https://github.com/yourusername/afxapicom"
+
+[tool.setuptools.packages.find]
+include = ["afxapicom*"]

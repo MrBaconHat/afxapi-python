@@ -1,4 +1,26 @@
-#from afxapicom.client import Client
-from afxapicom.new_client import Client
+from afxapicom.client import Client
+from afxapicom.errors import (
+    FXAPIError,
+    AuthenticationFailed,
+    RateLimited,
+    QuotaExceeded,
+    Forbidden,
+    NotFound,
+    ValidationError,
+    InternalServerError,
+    InvalidRequest,
+)
 
-debug = False
+__version__ = "0.1.0"
+__all__ = [
+    "Client",
+    "FXAPIError",
+    "AuthenticationFailed",
+    "RateLimited",
+    "QuotaExceeded",
+    "Forbidden",
+    "NotFound",
+    "ValidationError",
+    "InternalServerError",
+    "InvalidRequest",
+]

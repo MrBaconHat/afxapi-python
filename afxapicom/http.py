@@ -11,7 +11,7 @@ class HTTPClient:
         params = params or {}
         params['apikey'] = self.api_key
 
-        headers = {'User-Agent': 'afxapi/1.0'}
+        headers = {'User-Agent': 'afxapicom/1.0'}
 
         async with aiohttp.ClientSession(
             timeout=aiohttp.ClientTimeout(total=30)
@@ -25,7 +25,6 @@ class HTTPClient:
                     return await resp.json()
 
                 await self.__interpret_status(resp.status, await resp.text())
-
 
     async def __interpret_status(self, status, err_msg):
         exc_dict = {

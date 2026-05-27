@@ -1,87 +1,93 @@
-# fxapi Python Client #
+# afxapicom
 
-Fxapi Python Client is the official Python Wrapper around the fxapi [API](https://fxapi.com/).
+An unofficial async Python client for currency exchange rates.
 
 ## Installation
 
 Install from pip:
-````sh
-pip install fxapicom
-````
+```sh
+pip install afxapicom
+```
 
-Install from code:
-````sh
-pip install git+https://github.com/everapihq/fxapi-python.git
-````
+Install from source:
+```sh
+pip install git+https://github.com/yourusername/afxapicom.git
+```
 
 ## Usage
 
-All curencyapi API requests are made using the `Client` class. This class must be initialized with your API access key string. [Where is my API access key?](https://app.fxapi.com/dashboard)
-
-In your Python application, import `fxapi` and pass authentication information to initialize it:
-
-````python
-import fxapicom
-client = fxapicom.Client('API_KEY')
-````
-
-### Retrieve Status
+All requests are made using the `Client` class, initialized with your API key.
 
 ```python
+import afxapicom
+import asyncio
 
-print(client.status())
+async def main():
+    client = afxapicom.Client('YOUR_API_KEY')
+    # make calls here
 
+asyncio.run(main())
+```
+
+### Check API Status
+
+```python
+result = await client.status()
+print(result)
 ```
 
 ### Retrieve Currencies
-[https://fxapi.com/docs/currencies](https://fxapi.com/docs/currencies)
-```python
-
-result = client.currencies(currencies=['EUR', 'CAD'])
-print(result)
-
-```
-
-### Retrieve Latest Exchange Rates
-[https://fxapi.com/docs/latest](https://fxapi.com/docs/latest)
 
 ```python
-
-result = client.latest()
+result = await client.currencies(currencies=['EUR', 'USD'])
 print(result)
-
 ```
 
-### Retrieve Historical Exchange Rates
-[https://fxapi.com/docs/historical](https://fxapi.com/docs/historical)
+### Latest Exchange Rates
 
 ```python
-
-result = client.historical('2022-02-02')
+result = await client.latest(base_currency='USD', currencies=['EUR', 'GBP'])
 print(result)
-
 ```
 
-### Retrieve Historical Range Exchange Rates
-[https://fxapi.com/docs/range](https://fxapi.com/docs/range)
+### Historical Exchange Rates
 
 ```python
-
-result = client.range('2022-02-02', '2022-02-04')
+result = await client.historical('2024-01-01', base_currency='USD')
 print(result)
-
 ```
 
-### Retrieve Converted Exchange Rates
-[https://fxapi.com/docs/convert](https://fxapi.com/docs/convert)
+### Exchange Rates Over a Range
 
 ```python
-
-result = client.convert(1234)
+result = await client.range('2024-01-01', '2024-01-07', base_currency='USD')
 print(result)
-
 ```
 
+### Convert Currencies
 
-### Contact us
-Any feedback? Please feel free to [contact our team](mailto:office@everapi.com).
+```python
+result = await client.convert(1000, base_currency='USD', currencies=['EUR', 'GBP'])
+print(result)
+```
+
+## Error Handling
+
+```python
+from afxapicom import Client
+from afxapicom.errors import AuthenticationFailed, RateLimited, QuotaExceeded
+
+async def main():
+    client = Client('YOUR_API_KEY')
+    try:
+        result = await client.latest()
+        print(result)
+    except AuthenticationFailed:
+        print("Invalid API key")
+    except RateLimited:
+        print("Rate limit hit, slow down")
+    except QuotaExceeded:
+        print("Monthly quota exceeded")
+
+asyncio.run(main())
+```
