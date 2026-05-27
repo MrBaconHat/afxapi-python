@@ -27,8 +27,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/afxapicom"
-Repository = "https://github.com/yourusername/afxapicom"
+Homepage = "https://github.com/mrbaconhat/afxapi-python"
+Repository = "https://github.com/mrbaconhat/afxapi-python"
 
 [tool.setuptools.packages.find]
 include = ["afxapicom*"]
