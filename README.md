@@ -11,7 +11,7 @@ pip install afxapicom
 
 Install from source:
 ```sh
-pip install git+https://github.com/yourusername/afxapicom.git
+pip install git+https://github.com/MrBaconHat/afxapi-python.git
 ```
 
 ## Usage
