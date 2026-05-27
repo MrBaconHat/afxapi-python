@@ -10,7 +10,7 @@ with open(path.join(this_directory, 'README.md')) as f:
 setup(
     name='fxapicom',
     version='0.1.2',
-    packages=['fxapicom'],
+    packages=['afxapicom'],
     url='https://github.com/everapihq/fxapi-python',
     license='MIT',
     author='Everapi',

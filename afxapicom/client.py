@@ -1,4 +1,4 @@
-import everapi
+import aiohttp
 
 
 class Client(everapi.Client):
